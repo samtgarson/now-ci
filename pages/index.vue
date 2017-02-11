@@ -1,50 +1,24 @@
-<template>
-  <section class="container">
-    <img src="../assets/img/NuxtMicro.png" alt="Nuxt.js Logo" class="logo" />
-    <h1 class="title">
-      USERS
-    </h1>
-    <ul class="users">
-      <li v-for="(user, index) in users" class="user">
-        <nuxt-link :to="{ name: 'id', params: { id: index }}">
-          {{ user.name }}
-        </nuxt-link>
-      </li>
-    </ul>
-  </section>
-</template>
-
 <script>
-import axios from '~plugins/axios'
+import NavBar from '~components/nav'
 
 export default {
-  async data () {
-    let { data } = await axios.get('/api/users')
-    return {
-      users: data
-    }
-  },
-  head () {
-    return {
-      title: 'Users'
-    }
-  }
+  components: { NavBar }
 }
 </script>
 
-<style scoped>
-.title
-{
-  margin: 30px 0;
-}
-.users
-{
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-.user
-{
-  margin: 10px 0;
-}
+<template lang="pug">
+div
+  .hero.is-medium
+    .hero-head
+      nav-bar
+    .hero-body
+      .container.has-text-centered
+        a.button.is-large
+          span(class="icon is-medium")
+            i(class="fa fa-github")
+          span Log in with Github
+</template>
+
+<style scoped lang="sass">
+
 </style>
