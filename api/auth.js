@@ -8,11 +8,26 @@ const githubOAuth = require('github-oauth')({
   callbackURI: '/auth_callback',
   scope: 'user,repo'
 })
-
+const Client = require('./services/github')
 const auth = githubOAuth.login
+
+const createUser = async (token) => {
+  const client = Client(token)
+  return client.users.get({})
+}
+
+const redirect = (res, path) => {
+  res.setHeader('location', path)
+  send(res, 302)
+}
 const authCallback = async (req, res) => {
-  const token = await pify(githubOAuth.callback)(req, res)
-  req.token = token
+  const response = await pify(githubOAuth.callback)(req, res)
+  if (response.error) return redirect(res, '/?auth_error')
+
+  const user = await createUser(response.access_token)
+  user.token = response.access_token
+  req.user = user
+  redirect(res, '/')
 }
 
 module.exports = { auth, authCallback }

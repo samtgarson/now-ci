@@ -1,7 +1,4 @@
 export const state = {
-  name: null,
-  email: null,
-  avatar_url: null,
   loggedIn: false
 }
 
@@ -10,6 +7,7 @@ export const mutations = {
     state.name = user.name
     state.email = user.email
     state.avatar_url = user.avatar_url
+    state.token = user.token
     state.loggedIn = true
   },
   logOut (state) {
