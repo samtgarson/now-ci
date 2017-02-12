@@ -17,6 +17,7 @@
     "github-oauth": "^0.2.2",
     "micro": "^6.2.1",
     "micro-route": "^2.2.0",
+    "node-session": "^1.2.1",
     "nuxt": "latest",
     "pify": "^2.3.0"
   },

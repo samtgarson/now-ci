@@ -26,8 +26,13 @@ const authCallback = async (req, res) => {
 
   const user = await createUser(response.access_token)
   user.token = response.access_token
-  req.user = user
+  req.session.put('user', user)
   redirect(res, '/')
 }
 
-module.exports = { auth, authCallback }
+const logout = async (req, res) => {
+  req.session.flush()
+  redirect(res, '/')
+}
+
+module.exports = { auth, authCallback, logout }
