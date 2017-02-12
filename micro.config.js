@@ -1,11 +1,13 @@
+const route = require('micro-route')
 const dispatch = require('micro-route/dispatch')
-const { send } = require('micro')
-const { getUser, getUsers } = require('./api/')
+const { auth, authCallback } = require('./api/auth')
 const nuxt = require('./nuxt.index.js')
 
-module.exports = async (req, res) => {
-  await dispatch()
-    .dispatch('/api/users/:id', ['GET'], async (req, res, { params }) => send(res, 200, await getUser(params.id)))
-    .dispatch('/api/users', ['GET'], async (req, res) => send(res, 200, await getUsers()))
-    .dispatch('*', ['GET'], async (req, res) => await nuxt.render(req, res))(req, res)
-}
+const authCallbackRoute = route('/auth_callback', 'GET')
+
+module.exports = dispatch()
+    .dispatch('/auth', 'GET', auth)
+    .dispatch('*', 'GET', async (req, res) => {
+      if (authCallbackRoute(req)) await authCallback(req, res)
+      return await nuxt.render(req, res)
+    })

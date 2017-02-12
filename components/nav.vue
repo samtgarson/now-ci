@@ -5,7 +5,7 @@
 .nav
   .container
     .nav-left 
-      h1.nav-item Now CI
+      h1.nav-item: nuxt-link(to="/") Now CI
       a.nav-item(href="https://github.com/samtgarson/now-ci")
         span(class="icon is-small")
           i(class="fa fa-github")

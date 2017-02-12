@@ -8,7 +8,7 @@ export default {
 
 <template lang="pug">
 div
-  nav-bar(v-if="$route.path !== '/'")
+  nav-bar
   nuxt
 </template>
 

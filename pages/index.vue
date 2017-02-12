@@ -9,11 +9,10 @@ export default {
 <template lang="pug">
 div
   .hero.is-medium
-    .hero-head
-      nav-bar
     .hero-body
       .container.has-text-centered
-        a.button.is-large
+        h1.title.is-6 Log in to get started
+        a.button.is-large(href="/auth")
           span(class="icon is-medium")
             i(class="fa fa-github")
           span Log in with Github
