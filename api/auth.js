@@ -5,7 +5,7 @@ const githubOAuth = require('github-oauth')({
   baseURL: 'http://localhost:3000',
   loginURI: '/auth',
   callbackURI: '/auth_callback',
-  scope: 'user,repo,read:org'
+  scope: 'user,repo,read:org,admin:repo_hook'
 })
 const Client = require('./services/github')
 const redirect = require('./services/redirect')
