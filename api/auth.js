@@ -1,4 +1,3 @@
-const { send } = require('micro')
 const pify = require('pify')
 const githubOAuth = require('github-oauth')({
   githubClient: process.env['GITHUB_CLIENT'],
@@ -6,20 +5,19 @@ const githubOAuth = require('github-oauth')({
   baseURL: 'http://localhost:3000',
   loginURI: '/auth',
   callbackURI: '/auth_callback',
-  scope: 'user,repo'
+  scope: 'user,repo,read:org'
 })
 const Client = require('./services/github')
+const redirect = require('./services/redirect')
 const auth = githubOAuth.login
 
 const createUser = async (token) => {
   const client = Client(token)
-  return client.users.get({})
+  const user = await client.users.get({})
+  user.orgs = (await client.users.getOrgs({})).map(o => o.login)
+  return user
 }
 
-const redirect = (res, path) => {
-  res.setHeader('location', path)
-  send(res, 302)
-}
 const authCallback = async (req, res) => {
   const response = await pify(githubOAuth.callback)(req, res)
   if (response.error) return redirect(res, '/?auth_error')

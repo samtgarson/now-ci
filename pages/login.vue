@@ -13,15 +13,16 @@ export default {
 </script>
 
 <template lang="pug">
-.hero.is-medium
-  .hero-body
-    .container.has-text-centered
-      h1.title.is-5 Log in to get started
-      a.button.is-large(href="/auth")
-        span(class="icon is-medium")
-          i(class="fa fa-github")
-        span Log in with Github
-      h2.subtitle.is-6#error(v-if="error") Something went wrong, please try again.
+div
+  .hero.is-medium
+    .hero-body
+      .container.has-text-centered
+        h1.title.is-5 Log in to get started
+        a.button.is-large(href="/auth")
+          span(class="icon is-medium")
+            i(class="fa fa-github")
+          span Log in with Github
+        h2.subtitle.is-6#error(v-if="error") Something went wrong, please try again.
 </template>
 
 <style scoped lang="sass">

@@ -1,9 +1,9 @@
 <script>
 import NavBar from '~components/nav'
-
 export default {
   components: { NavBar }
 }
+
 </script>
 
 <template lang="pug">
