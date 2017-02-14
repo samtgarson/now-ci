@@ -77,7 +77,7 @@ export default {
                   i.fa.fa-github
             .level-right
               .button.level-item(:class="{ 'is-success': repo.hooked }") {{ repo.hooked ? 'Building' : 'Build' }}
-          li(v-if="!repos.length").has-text-centered No results... 😧
+          li(v-if="!repos.length && !loading").has-text-centered No results... 😧
         .pagination(v-if="pages.next || pages.prev")
           a.button(:class="{ 'is-disabled': !pages.prev, 'is-loading': pages.prev == 'loading' }", @click="page--; pages.prev = 'loading'") Previous Page
           a.button(:class="{ 'is-disabled': !pages.next, 'is-loading': pages.next == 'loading' }", @click="page++; pages.next = 'loading'") Next Page
