@@ -17,7 +17,7 @@
     "github": "^8.2.1",
     "github-oauth": "^0.2.2",
     "micro": "^6.2.1",
-    "micro-method-router": "samtgarson/micro-method-router#patch-1",
+    "micro-method-router": "^0.1.0",
     "micro-route": "^2.2.0",
     "micro-visualize": "^3.0.0",
     "node-session": "^1.2.1",

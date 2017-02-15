@@ -3523,9 +3523,9 @@ methods@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/methods/-/methods-1.1.2.tgz#5529a4d67654134edcc5266656835b0f851afcee"
 
-micro-method-router@samtgarson/micro-method-router#patch-1:
-  version "0.0.0"
-  resolved "https://codeload.github.com/samtgarson/micro-method-router/tar.gz/3c355c2163af868bea6cf7045010e4e635eca460"
+micro-method-router@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/micro-method-router/-/micro-method-router-0.1.0.tgz#d51d905e8117ce219e847bee505721a46a30ab2f"
 
 micro-route@^2.2.0:
   version "2.2.0"
