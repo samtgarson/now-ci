@@ -2,6 +2,7 @@
 import { mapState } from 'vuex'
 import debounce from 'debounce'
 import axios from '~/lib/axios'
+import Repo from '~/components/repo'
 
 export default {
   data ({ store }) {
@@ -44,11 +45,9 @@ export default {
         next: !!repos.headers['x-next-page'],
         prev: !!repos.headers['x-prev-page']
       }
-    }, 200),
-    clearSearch () {
-
-    }
-  }
+    }, 200)
+  },
+  components: { Repo }
 }
 </script>
 
@@ -69,14 +68,7 @@ export default {
               a(@click="selected=org", :class="{'is-active': selected===org}") {{ org }}
       .column.is-9
         ul#repos
-          li(v-for="repo in repos").level.is-mobile
-            .level-left 
-              span.level-item {{ repo.name }}
-              a(:href="repo.html_url", target="_blank").level-item
-                span.icon.is-small
-                  i.fa.fa-github
-            .level-right
-              .button.level-item(:class="{ 'is-success': repo.hooked }") {{ repo.hooked ? 'Building' : 'Build' }}
+          repo(v-for="repo in repos", :repo="repo")
           li(v-if="!repos.length && !loading").has-text-centered No results... 😧
         .pagination(v-if="pages.next || pages.prev")
           a.button(:class="{ 'is-disabled': !pages.prev, 'is-loading': pages.prev == 'loading' }", @click="page--; pages.prev = 'loading'") Previous Page
