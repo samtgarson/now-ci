@@ -19,6 +19,7 @@ module.exports = class Repos extends Query {
   async search () {
     let search = [this.query.query]
     search.push('in:name')
+    search.push('fork:true')
     search.push(`user:${this.query.org ? this.query.org : this.user.login}`)
     const res = await this.client.search.repos({ q: search.join(' '), page: this.page, per_page: 20} )
     this.setPages(res)
