@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "nodemon --harmony server.js",
     "build": "nuxt build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "NODE_ENV=production node --harmony server.js",
     "precommit": "npm run lint",
     "lint": "xo"
   },
