@@ -21,6 +21,7 @@
     "micro-route": "^2.2.0",
     "micro-visualize": "^3.0.0",
     "node-session": "^1.2.1",
+    "now-logs": "^0.0.7",
     "nuxt": "latest",
     "pify": "^2.3.0"
   },
@@ -37,6 +38,13 @@
     "pug": "^2.0.0-beta11",
     "sass-loader": "^5.0.1",
     "xo": "^0.17.1"
+  },
+  "now": {
+    "env": {
+      "GITHUB_CLIENT": "@ci_github_client",
+      "GITHUB_SECRET": "@ci_github_secret",
+      "SECRET_KEY": "@ci_secret_key"
+    }
   },
   "main": "server.js",
   "repository": "samtgarson/now-ci",

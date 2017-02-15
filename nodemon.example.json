@@ -1,7 +1,0 @@
-{
-  "env": {
-    "GITHUB_CLIENT": "client id",
-    "GITHUB_SECRET": "client secret",
-    "SECRET_KEY": "sekret"
-  }
-}

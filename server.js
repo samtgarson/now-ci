@@ -1,3 +1,4 @@
+require('now-logs')(process.env.SECRET_KEY)
 const micro = require('micro')
 const visualize = require('micro-visualize')
 const serviceConfig = require('./micro.config.js')
