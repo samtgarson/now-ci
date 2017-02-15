@@ -1,3 +1,4 @@
+if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 require('now-logs')(process.env.SECRET_KEY)
 const micro = require('micro')
 const visualize = require('micro-visualize')

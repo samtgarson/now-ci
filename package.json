@@ -14,6 +14,7 @@
   "dependencies": {
     "axios": "^0.15.3",
     "debounce": "^1.0.0",
+    "dotenv": "^4.0.0",
     "github": "^8.2.1",
     "github-oauth": "^0.2.2",
     "micro": "^6.2.1",
