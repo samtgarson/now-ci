@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "cookie-session": "^2.0.0-alpha.3",
     "debounce": "^1.0.0",
     "dotenv": "^4.0.0",
     "github": "^8.2.1",
@@ -21,7 +22,6 @@
     "micro-method-router": "^0.1.0",
     "micro-route": "^2.2.0",
     "micro-visualize": "^3.0.0",
-    "node-session": "^1.2.1",
     "now-logs": "^0.0.7",
     "nuxt": "latest",
     "pify": "^2.3.0"
@@ -45,7 +45,8 @@
       "GITHUB_CLIENT": "@ci_github_client",
       "GITHUB_SECRET": "@ci_github_secret",
       "SECRET_KEY": "@ci_secret_key"
-    }
+    },
+    "alias": "ci"
   },
   "main": "server.js",
   "repository": "samtgarson/now-ci",

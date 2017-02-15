@@ -24,12 +24,12 @@ const authCallback = async (req, res) => {
 
   const user = await createUser(response.access_token)
   user.token = response.access_token
-  req.session.put('user', user)
+  req.session.user = user
   redirect(res, '/')
 }
 
 const logout = async (req, res) => {
-  req.session.flush()
+  req.session = null
   redirect(res, '/')
 }
 
