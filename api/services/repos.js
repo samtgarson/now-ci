@@ -1,4 +1,5 @@
 const Query = require('./query')
+const { findHook } = require('./utils')
 
 module.exports = class Repos extends Query {
   async perform () {
@@ -24,16 +25,10 @@ module.exports = class Repos extends Query {
     return res.items
   }
   getHooks () {
-    return this.res.map(async repo => new Promise((resolve) => {
-      this.client.repos.getHooks({
-        owner: repo.owner.login,
-        repo: repo.name
-      }).then(hooks => {
-        repo.hooked = hooks
-          .filter(hook => hook.active)
-          .some(hook => hook.config && hook.config.url && hook.config.url.includes(this.host))
-        resolve(repo)
-      })
+    return this.res.map(repo => new Promise(async (resolve) => {
+      const hook = await findHook({ client, owner: repo.owner.login, name: repo.name, host: this.host })
+      repo.hooked = !!hook
+      return resolve(repo)
     }))
   }
 }

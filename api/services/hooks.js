@@ -1,4 +1,6 @@
 const Query = require('./query')
+const { findHook } = require('./utils')
+
 module.exports = class Hooks extends Query {
   async create () {
     return this.client.repos.createHook({
@@ -9,7 +11,18 @@ module.exports = class Hooks extends Query {
       active: true
     })
   }
-  delete () {
-
+  async delete () {
+    const { owner, name } = this.params
+    const hook = await findHook({
+      owner,
+      name,
+      client: this.client,
+      host: this.host
+    })
+    return this.client.repos.deleteHook({
+      owner,
+      repo: name,
+      id: hook.id
+    }) 
   }
 }

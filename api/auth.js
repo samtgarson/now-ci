@@ -8,7 +8,7 @@ const githubOAuth = require('github-oauth')({
   scope: 'user,repo,read:org,admin:repo_hook'
 })
 const Client = require('./services/github')
-const redirect = require('./services/redirect')
+const { redirect } = require('./services/utils')
 const auth = githubOAuth.login
 
 const createUser = async (token) => {

@@ -20,7 +20,8 @@ export default {
       this.repo.hooked = true
     },
     async unbuild() {
-
+      await axios.delete(`/api/repos/${this.repo.owner.login}/${this.repo.name}/build`)
+      this.repo.hooked = false
     }
   }
 }
