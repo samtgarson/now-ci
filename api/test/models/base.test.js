@@ -81,7 +81,7 @@ test('can count', t => {
   const base = new Test({ a: 1, b: 2 })
   base.save()
 
-  t.is(1, Test.count)
+  t.is(Test.count, 1)
 })
 
 test('can new and create', t => {
@@ -90,5 +90,17 @@ test('can new and create', t => {
 
   t.false(base._persisted)
   t.true(base2._persisted)
-  t.is(1, Test.count)
+  t.is(Test.count, 1)
+})
+
+test('can delete', t => {
+  const base = Test.create({ a: 1, b: 2 })
+  Test.create({ a: 1, b: 2 })
+
+  t.is(Test.count, 2)
+  base.delete()
+  t.is(Test.count, 1)
+
+  Test.deleteAll()
+  t.is(Test.count, 0)
 })

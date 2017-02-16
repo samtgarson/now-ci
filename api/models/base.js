@@ -1,4 +1,4 @@
-const { count, insert, update, findById, find, findAll } = require('in-mem')
+const { count, insert, update, findById, find, findAll, del } = require('in-mem')
 
 const matches = (r, attrs) => {
   return Object.keys(attrs).every(attr => r[attr] === attrs[attr])
@@ -41,6 +41,9 @@ module.exports = class Base {
   static get count () {
     return count(this.name)
   }
+  static deleteAll () {
+    return del(this.name)
+  }
   get _name () {
     return this.constructor.name
   }
@@ -53,6 +56,10 @@ module.exports = class Base {
   save () {
     if (this._persisted) return this._update()
     return this._insert()
+  }
+  delete () {
+    if (!this._persisted) return true
+    return del(this._name, r => r.id === this.id)
   }
   _insert () {
     this._persisted = true
