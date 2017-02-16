@@ -1,6 +1,6 @@
 const cookieSession = require('cookie-session')
 
-module.exports = async (req, res) => new Promise((resolve, reject) => {
+module.exports = async (req, res) => new Promise(resolve => {
   cookieSession({
     name: 'session',
     keys: [process.env.SECRET_KEY],

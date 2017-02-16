@@ -1952,9 +1952,9 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-samtgarson@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/eslint-config-samtgarson/-/eslint-config-samtgarson-0.0.5.tgz#252cfa7a15f869509e03b6f5ee05be6629323172"
+eslint-config-samtgarson@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/eslint-config-samtgarson/-/eslint-config-samtgarson-0.0.6.tgz#83203abcbe6e79695da350e9eaa8e67857d8536e"
 
 eslint-config-xo@^0.17.0:
   version "0.17.0"

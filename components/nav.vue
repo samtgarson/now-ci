@@ -20,8 +20,6 @@ export default {
       nav-item.nav-item(path="/settings") Settings
       .nav-item
           a.button(href="/logout") Logout
-      //- .nav-item
-      //-   img#avatar.image.is-24x24(:src="user.avatar_url")
 </template>
 <style lang="sass" scoped>
 @import '~bulma/sass/utilities/variables'

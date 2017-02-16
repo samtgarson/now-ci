@@ -6,7 +6,7 @@ module.exports = class Repos extends Query {
     this.res = this.query.query ? await this.search() : await this.getAll()
     return Promise.all(this.getHooks())
   }
-  setPages(link) {
+  setPages (link) {
     if (this.client.hasNextPage(link)) this.setHeader('X-NEXT-PAGE', true)
     if (this.client.hasPreviousPage(link)) this.setHeader('X-PREV-PAGE', true)
   }
@@ -19,14 +19,14 @@ module.exports = class Repos extends Query {
   async search () {
     let search = [this.query.query, 'in:name', 'fork:true']
     search.push(`user:${this.query.org ? this.query.org : this.user.login}`)
-    const res = await this.client.search.repos({ q: search.join(' '), page: this.page, per_page: 20} )
+    const res = await this.client.search.repos({ q: search.join(' '), page: this.page, per_page: 20 })
     this.setPages(res)
     return res.items
   }
   getHooks () {
-    return this.res.map(repo => new Promise(async (resolve) => {
-      const hook = await findHook({ client, owner: repo.owner.login, name: repo.name, host: this.host })
-      repo.hooked = !!hook
+    return this.res.map(repo => new Promise(async resolve => {
+      const hook = await findHook({ client: this.client, owner: repo.owner.login, name: repo.name, host: this.host })
+      repo.hooked = Boolean(hook)
       return resolve(repo)
     }))
   }

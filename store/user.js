@@ -7,7 +7,7 @@ export const mutations = {
     state.name = user.name
     state.email = user.email
     state.login = user.login
-    state.avatar_url = user.avatar_url
+    state.avatarUrl = user.avatar_url
     state.orgs = user.orgs
     state.loggedIn = true
   },

@@ -1,18 +1,19 @@
 const pify = require('pify')
 const githubOAuth = require('github-oauth')({
-  githubClient: process.env['GITHUB_CLIENT'],
-  githubSecret: process.env['GITHUB_SECRET'],
+  githubClient: process.env.GITHUB_CLIENT,
+  githubSecret: process.env.GITHUB_SECRET,
   baseURL: 'http://localhost:3000',
   loginURI: '/auth',
   callbackURI: '/auth_callback',
   scope: 'user,repo,read:org,admin:repo_hook'
 })
-const Client = require('./services/github')
+const createClient = require('./services/github')
 const { redirect } = require('./services/utils')
+
 const auth = githubOAuth.login
 
-const createUser = async (token) => {
-  const client = Client(token)
+const createUser = async token => {
+  const client = createClient(token)
   const user = await client.users.get({})
   user.orgs = (await client.users.getOrgs({})).map(o => o.login)
   return user

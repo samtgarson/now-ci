@@ -1,5 +1,5 @@
 const dispatch = require('micro-route/dispatch')
-const { send, createError } = require('micro')
+const { createError } = require('micro')
 const { auth, authCallback, logout } = require('./api/auth')
 const api = require('./api')
 const setupSession = require('./api/services/session')

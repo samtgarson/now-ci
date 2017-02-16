@@ -1,4 +1,4 @@
-const { send, createError } = require('micro')
+const { createError } = require('micro')
 const dispatch = require('micro-route/dispatch')
 const repos = require('./routes/repos')
 const hooks = require('./routes/hooks')

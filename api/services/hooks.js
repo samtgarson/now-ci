@@ -7,7 +7,12 @@ module.exports = class Hooks extends Query {
       owner: this.params.owner,
       repo: this.params.name,
       name: 'web',
-      config: { url: `http://${this.host}/hook`, content_type: 'json', insecure_ssl: true, secret: process.env.SECRET_KEY },
+      config: {
+        url: `http://${this.host}/hook`,
+        content_type: 'json',
+        insecure_ssl: true,
+        secret: process.env.SECRET_KEY
+      },
       active: true
     })
   }
@@ -23,6 +28,6 @@ module.exports = class Hooks extends Query {
       owner,
       repo: name,
       id: hook.id
-    }) 
+    })
   }
 }
