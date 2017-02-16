@@ -9,7 +9,9 @@
     "build": "nuxt build",
     "start": "NODE_ENV=production node --harmony server.js",
     "precommit": "npm run lint",
-    "lint": "xo"
+    "test": "xo && ava",
+    "test:spec": "ava",
+    "test:lint": "xo"
   },
   "dependencies": {
     "axios": "^0.15.3",
@@ -18,6 +20,7 @@
     "dotenv": "^4.0.0",
     "github": "^8.2.1",
     "github-oauth": "^0.2.2",
+    "in-mem": "^0.0.2-RC2",
     "micro": "^6.2.1",
     "micro-method-router": "^0.1.0",
     "micro-route": "^2.2.0",
@@ -27,7 +30,12 @@
     "pify": "^2.3.0"
   },
   "devDependencies": {
+    "ava": "^0.18.1",
     "babel-eslint": "^7.1.1",
+    "babel-polyfill": "^6.23.0",
+    "babel-preset-latest": "^6.22.0",
+    "babel-preset-stage-2": "^6.22.0",
+    "babel-register": "^6.23.0",
     "bulma": "^0.3.1",
     "eslint": "^3.13.1",
     "eslint-config-samtgarson": "^0.0.6",
@@ -68,5 +76,24 @@
       "camelcase": 0
     },
     "parser": "babel-eslint"
+  },
+  "ava": {
+    "files": [
+      "api/test/**/*.test.js"
+    ],
+    "source": [
+      "api/**/*.js"
+    ],
+    "require": [
+      "babel-register",
+      "babel-polyfill"
+    ],
+    "babel": "inherit"
+  },
+  "babel": {
+    "presets": [
+      "latest",
+      "stage-2"
+    ]
   }
 }
