@@ -3996,9 +3996,9 @@ micro-method-router@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/micro-method-router/-/micro-method-router-0.1.0.tgz#d51d905e8117ce219e847bee505721a46a30ab2f"
 
-micro-route@samtgarson/micro-route:
-  version "2.2.0"
-  resolved "https://codeload.github.com/samtgarson/micro-route/tar.gz/53d90dd600b12d4bbe68f523e5c3c58bb96c0865"
+micro-route@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/micro-route/-/micro-route-2.2.1.tgz#c99348ee115f15e8da741a0b863d1c30b563baa4"
   dependencies:
     url-pattern "^1.0.3"
 

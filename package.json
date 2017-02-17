@@ -6,9 +6,8 @@
   "private": false,
   "scripts": {
     "dev": "node build --watch",
-    "build": "node build && nuxt build",
-    "start": "NODE_ENV=production node index.js",
-    "precommit": "npm run lint",
+    "build": "node ./build && nuxt build",
+    "start": "NODE_ENV=production node ./index.js",
     "test": "xo && ava",
     "test:spec": "ava",
     "test:lint": "xo"
@@ -25,7 +24,7 @@
     "in-mem": "^0.0.2-RC2",
     "micro": "^6.2.1",
     "micro-method-router": "^0.1.0",
-    "micro-route": "samtgarson/micro-route",
+    "micro-route": "^2.2.1",
     "micro-visualize": "^3.0.0",
     "now-logs": "^0.0.7",
     "nuxt": "latest",
@@ -62,7 +61,7 @@
     },
     "alias": "ci"
   },
-  "main": "server.js",
+  "main": "index.js",
   "repository": "samtgarson/now-ci",
   "license": "MIT",
   "xo": {
