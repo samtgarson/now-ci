@@ -1,6 +1,6 @@
-const Github = require('github')
+import Github from 'github'
 
-module.exports = token => {
+export default token => {
   const client = new Github({ promise: Promise })
   client.authenticate({ type: 'token', token })
   return client

@@ -3,9 +3,7 @@ import { findById, del } from 'in-mem'
 import Base from '../../models/base'
 
 class Test extends Base {
-  static get attrs () {
-    return ['a', 'b']
-  }
+  static attrs = ['a', 'b', 'testAttr']
 }
 
 test.afterEach.always(() => {
@@ -30,7 +28,7 @@ test('has a name', t => {
 test('has values', t => {
   const attrs = { a: 1, b: 2 }
   const base = new Test(attrs)
-  t.deepEqual(base.values, { ...attrs, _persisted: false })
+  t.deepEqual(base.values, { ...attrs, _persisted: false, testAttr: undefined })
 })
 
 test('can save and update', t => {
@@ -103,4 +101,9 @@ test('can delete', t => {
 
   Test.deleteAll()
   t.is(Test.count, 0)
+})
+
+test('it transforms attr names', t => {
+  const base = Test.create({test_attr: 'value'})
+  t.is(base.testAttr, 'value')
 })

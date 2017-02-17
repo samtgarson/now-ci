@@ -1,7 +1,7 @@
-const methods = require('micro-method-router')
-const HooksService = require('../services/hooks')
+import methods from 'micro-method-router'
+import HooksService from '../services/hooks'
 
-module.exports = methods({
+export default methods({
   async post (req, res, { query, params }) {
     const svc = new HooksService({ req, res, query, params })
     return svc.create()

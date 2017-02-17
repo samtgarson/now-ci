@@ -1,8 +1,7 @@
-if (process.env.NODE_ENV !== 'production') require('dotenv').config()
 require('now-logs')(process.env.SECRET_KEY)
-const micro = require('micro')
-const visualize = require('micro-visualize')
-const serviceConfig = require('./micro.config.js')
+import micro from 'micro'
+import visualize from 'micro-visualize'
+import serviceConfig from './micro.config.js'
 
 const host = process.env.HOST || 'localhost'
 const port = process.env.PORT || '3000'

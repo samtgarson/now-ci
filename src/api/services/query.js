@@ -1,6 +1,6 @@
-const createClient = require('../services/github')
+import createClient from '../services/github'
 
-module.exports = class Query {
+class Query {
   constructor ({ req, res, query, params }) {
     this.user = req.session.user
     this.host = req.headers.host
@@ -14,3 +14,5 @@ module.exports = class Query {
     this._res.setHeader(...args)
   }
 }
+
+export default Query

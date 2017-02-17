@@ -1,20 +1,20 @@
-const { count, insert, update, findById, find, findAll, del } = require('in-mem')
+import { count, insert, update, findById, find, findAll, del } from 'in-mem'
+import camelize from 'camelize'
 
 const matches = (r, attrs) => {
   return Object.keys(attrs).every(attr => r[attr] === attrs[attr])
 }
 
-module.exports = class Base {
+class Base {
   constructor (attrs = {}) {
     this._persisted = attrs._persisted || false
     if (attrs.id) this.id = attrs.id
     if (attrs.dateCreated) this.dateCreated = attrs.dateCreated
 
-    this.constructor.attrs.forEach(key => this[key] = attrs[key])
+    const transformedAttrs = camelize(attrs)
+    this.constructor.attrs.forEach(key => this[key] = transformedAttrs[key])
   }
-  static get attrs () {
-    return []
-  }
+  static attrs = []
   static new (attrs) {
     return new this(attrs)
   }
@@ -73,3 +73,5 @@ module.exports = class Base {
     return true
   }
 }
+
+export default Base

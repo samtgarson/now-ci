@@ -1,7 +1,7 @@
-const Query = require('./query')
-const { findHook } = require('./utils')
+import Query from './query'
+import { findHook } from './utils'
 
-module.exports = class Hooks extends Query {
+class Hooks extends Query {
   async create () {
     return this.client.repos.createHook({
       owner: this.params.owner,
@@ -31,3 +31,5 @@ module.exports = class Hooks extends Query {
     })
   }
 }
+
+export default Hooks

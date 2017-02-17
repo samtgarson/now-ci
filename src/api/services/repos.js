@@ -1,7 +1,7 @@
-const Query = require('./query')
-const { findHook } = require('./utils')
+import Query from './query'
+import { findHook } from './utils'
 
-module.exports = class Repos extends Query {
+class Repos extends Query {
   async perform () {
     this.res = this.query.query ? await this.search() : await this.getAll()
     return Promise.all(this.getHooks())
@@ -31,3 +31,5 @@ module.exports = class Repos extends Query {
     }))
   }
 }
+
+export default Repos

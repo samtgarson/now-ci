@@ -1,5 +1,9 @@
-const pify = require('pify')
-const githubOAuth = require('github-oauth')({
+import pify from 'pify'
+import githubOAuth from 'github-oauth'
+import createClient from './services/github'
+import { redirect } from './services/utils'
+
+const oauth = githubOAuth({
   githubClient: process.env.GITHUB_CLIENT,
   githubSecret: process.env.GITHUB_SECRET,
   baseURL: 'http://localhost:3000',
@@ -7,10 +11,8 @@ const githubOAuth = require('github-oauth')({
   callbackURI: '/auth_callback',
   scope: 'user,repo,read:org,admin:repo_hook'
 })
-const createClient = require('./services/github')
-const { redirect } = require('./services/utils')
 
-const auth = githubOAuth.login
+const auth = oauth.login
 
 const createUser = async token => {
   const client = createClient(token)
@@ -20,7 +22,7 @@ const createUser = async token => {
 }
 
 const authCallback = async (req, res) => {
-  const response = await pify(githubOAuth.callback)(req, res)
+  const response = await pify(oauth.callback)(req, res)
   if (response.error) return redirect(res, '/?auth_error')
 
   const user = await createUser(response.access_token)
@@ -34,4 +36,4 @@ const logout = async (req, res) => {
   redirect(res, '/')
 }
 
-module.exports = { auth, authCallback, logout }
+export default { auth, authCallback, logout }

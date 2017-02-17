@@ -12,3 +12,6 @@ dist
 
 nodemon.json
 .env
+
+/index.js
+build/_records

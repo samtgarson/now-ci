@@ -1,9 +1,9 @@
-const { createError } = require('micro')
-const dispatch = require('micro-route/dispatch')
-const repos = require('./routes/repos')
-const hooks = require('./routes/hooks')
+import { createError } from 'micro'
+import repos from './routes/repos'
+import hooks from './routes/hooks'
+import dispatch from 'micro-route/dispatch'
 
-module.exports = async (req, res) => {
+export default async (req, res) => {
   if (!req.session.user) throw createError(401, 'Unauthorized')
   return dispatch()
     .dispatch('/api/repos/:owner/:name/build', ['POST', 'DELETE'], hooks)
