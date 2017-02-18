@@ -1,7 +1,7 @@
 import pify from 'pify'
 import githubOAuth from 'github-oauth'
-import createClient from './services/github'
-import { redirect } from './services/utils'
+import createClient from '../services/github'
+import { redirect } from '../services/utils'
 
 const oauth = githubOAuth({
   githubClient: process.env.GITHUB_CLIENT,
@@ -12,7 +12,7 @@ const oauth = githubOAuth({
   scope: 'user,repo,read:org,admin:repo_hook'
 })
 
-const auth = oauth.login
+export const auth = oauth.login
 
 const createUser = async token => {
   const client = createClient(token)
@@ -21,7 +21,7 @@ const createUser = async token => {
   return user
 }
 
-const authCallback = async (req, res) => {
+export const authCallback = async (req, res) => {
   const response = await pify(oauth.callback)(req, res)
   if (response.error) return redirect(res, '/?auth_error')
 
@@ -31,9 +31,7 @@ const authCallback = async (req, res) => {
   redirect(res, '/')
 }
 
-const logout = async (req, res) => {
+export const logout = async (req, res) => {
   req.session = null
   redirect(res, '/')
 }
-
-export default { auth, authCallback, logout }

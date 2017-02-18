@@ -1,6 +1,6 @@
 import { createError } from 'micro'
-import repos from './routes/repos'
-import hooks from './routes/hooks'
+import repos from './repos'
+import hooks from './hooks'
 import dispatch from 'micro-route/dispatch'
 
 export default async (req, res) => {

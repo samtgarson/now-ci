@@ -1,6 +1,5 @@
 <template>
   <section class="container">
-    <img src="../assets/img/NuxtMicro.png" alt="NuxtMicro.js Logo" class="logo" />
     <h1 class="title">
       {{ error.statusCode }}
     </h1>

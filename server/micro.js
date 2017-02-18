@@ -1,10 +1,11 @@
 import { sendError } from 'micro'
-import { auth, authCallback, logout } from './api/auth'
-import api from './api'
-import hook from './api/routes/hook'
-import setupSession from './api/services/session'
-import nuxt from './nuxt.js'
 import dispatch from 'micro-route/dispatch'
+import route from 'micro-route'
+import api from './routes'
+import { auth, authCallback, logout } from './routes/auth'
+import hook from './routes/hook'
+import setupSession from './services/session'
+import nuxt from './nuxt.js'
 
 export default async (req, res) => {
   try {
@@ -14,7 +15,7 @@ export default async (req, res) => {
       .dispatch('/auth_callback', 'GET', authCallback)
       .dispatch('/logout', 'GET', logout)
       .dispatch('/hook', 'POST', hook)
-      .dispatch('/api/*', ['GET', 'POST', 'DELETE', 'PUT'], api)
+      .dispatch('/api/*', '*', api)
       .dispatch('*', 'GET', nuxt.render)(req, res)
     return ret
   } catch (err) {

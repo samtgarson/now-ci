@@ -8,16 +8,10 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'An ephemeral CI tool for javascript apps' }
     ]
   },
-  /*
-  ** Global CSS
-  */
   css: [
     { src: 'font-awesome/css/font-awesome.min.css' },
     { src: '~assets/base.sass', lang: 'sass' }
   ],
-  /*
-  ** Add axios globally
-  */
   build: {
     vendor: ['axios']
   }
