@@ -1,5 +1,5 @@
 const Nuxt = require('nuxt')
-let config = require('./nuxt.config.js')
+let config = require('../nuxt.config.js')
 
 // Import and Set Nuxt.js options
 config.dev = !(process.env.NODE_ENV === 'production')

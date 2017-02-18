@@ -1,13 +1,11 @@
 module.exports = {
-  /*
-  ** Headers of the page
-  */
+  srcDir: 'client/',
   head: {
     title: 'Now CI',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', meta: 'description', content: 'An ephemeral CI tool for javascript apps' }
+      { hid: 'description', name: 'description', content: 'An ephemeral CI tool for javascript apps' }
     ]
   },
   /*

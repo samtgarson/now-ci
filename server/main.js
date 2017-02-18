@@ -1,7 +1,7 @@
 require('now-logs')(process.env.SECRET_KEY)
 import micro from 'micro'
 import visualize from 'micro-visualize'
-import serviceConfig from './micro.config.js'
+import serviceConfig from './micro.js'
 
 const host = process.env.HOST || 'localhost'
 const port = process.env.PORT || '3000'

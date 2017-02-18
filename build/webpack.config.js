@@ -15,7 +15,7 @@ const config = {
   target: 'node',
   entry: [
     'babel-polyfill',
-    path.resolve(projectRoot, 'src/main.js')
+    path.resolve(projectRoot, 'server/main.js')
   ],
   output: {
     libraryTarget: 'commonjs2',
