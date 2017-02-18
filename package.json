@@ -6,7 +6,7 @@
   "private": false,
   "scripts": {
     "dev": "node build --watch",
-    "build": "node ./build && nuxt build",
+    "build": "node ./build && nuxt build src/",
     "start": "NODE_ENV=production node ./index.js",
     "test": "xo && ava",
     "test:spec": "ava",
@@ -28,7 +28,8 @@
     "micro-visualize": "^3.0.0",
     "now-logs": "^0.0.7",
     "nuxt": "latest",
-    "pify": "^2.3.0"
+    "pify": "^2.3.0",
+    "scmp": "^2.0.0"
   },
   "devDependencies": {
     "ava": "^0.18.1",
