@@ -21,6 +21,7 @@
     "dotenv": "^4.0.0",
     "github": "^8.2.1",
     "github-oauth": "^0.2.2",
+    "highlight.js": "^9.9.0",
     "in-mem": "^0.0.2-RC2",
     "micro": "^6.2.1",
     "micro-method-router": "^0.1.0",
