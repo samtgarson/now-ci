@@ -20,6 +20,7 @@ export default async (req, res) => {
   if (!secure) throw createError(401, 'X-Hub-Signature does not match blob signature')
   const payload = await json(req)
   const build = Build.create(payload)
+  console.log(Build.count)
   build.run()
   return send(res, 200, 'Success')
 }

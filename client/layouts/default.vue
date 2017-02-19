@@ -13,4 +13,8 @@ div
 </template>
 
 <style lang="sass">
+@import '~bulma/sass/utilities/variables'
+
+.hero .tabs ul
+  border-bottom: 1px solid $border
 </style>

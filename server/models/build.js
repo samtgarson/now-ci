@@ -10,6 +10,7 @@ class Build extends Base {
   ]
 
   get branch () {
+    if (!this.ref) return
     const split = this.ref.split('/')
     return split[split.length - 1]
   }

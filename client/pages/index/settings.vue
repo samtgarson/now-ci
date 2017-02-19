@@ -23,9 +23,5 @@ div
   nuxt-child
 </template>
 
-<style scoped lang="sass">
-@import '~bulma/sass/utilities/variables'
-
-.hero .tabs ul
-  border-bottom: 1px solid $border
+<style lang="sass" scoped>
 </style>
