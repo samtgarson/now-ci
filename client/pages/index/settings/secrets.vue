@@ -1,32 +1,32 @@
 <script>
 import { highlightBlock } from 'highlight.js'
+import SecretsForm from '~components/secrets-form'
 
 export default {
   mounted () {
     const codes = this.$el.querySelectorAll('pre')
+    console.log(codes)
     for (let code of codes) {
       highlightBlock(code)
     }
-  }
+  },
+  components: { SecretsForm }
 }
 </script>
 
 <template lang="pug">
 section.section
   .container
-    p To get environment variables injected into your builds, use Now's built in secrets system. Here's a brief walkthrough:
-    ul
-      li.columns
-        .column
+    secrets-form
+      p#intro To get environment variables injected into your builds, use Now's built in secrets system. Here's a brief walkthrough:
+      ul
+        li
           h2.subtitle.is-4 1. Add your secrets to Now
-          p Take a look <a href="https://zeit.co/blog/environment-variables-secrets">here</a> for more info.
-        .column
+          p Either use the the form on Now CI, or use the command line (take a look <a href="https://zeit.co/blog/environment-variables-secrets">here</a> for more info).
           pre: code.bash $ now secret add your_secret_name your-secret-value
-      li.columns
-        .column
+        li
           h2.subtitle.is-4 2. Add the secrets to your package.json
           p Notice the use of @ to indicate you are using the name of an existing secret.
-        .column
           pre: code.json.
             # package.json
             {
@@ -36,11 +36,9 @@ section.section
                 }
               }
             }
-      li.columns
-        .column
+        li
           h2.subtitle.is-4 3. Use the env var in your application
-          p Your env vars will be named whatever you named them in step 2.
-        .column
+          p Now CI will use your package.json config to automagically inject your env vars (they will be named whatever you named them in step 2).
           pre: code.js.
             # index.js 
             const varName = process.env['YOUR_ENV_VAR']
@@ -64,12 +62,13 @@ a
   &:hover::after
     background-color: $text
 
-.container > p
-  margin-bottom: 50px
+#intro
+  margin-bottom: 40px
 
-li.columns
-  margin-bottom: 30px
+li
+  margin-bottom: 40px
 
 pre
   background-color: $white-bis
+  margin-top: 20px
 </style>
